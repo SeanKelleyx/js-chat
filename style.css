@@ -1,0 +1,55 @@
+body{
+	background-color: white;
+	color: #303030;
+	font-family: 'Helvetica Neue', Arial, sans-serif;
+	margin: 20px;
+}
+main{
+	background-color: #f0f0f0;
+	margin: 20px auto;
+	max-width: 450px;
+	padding: 20px;
+	border-radius: 10px;
+}
+ol#history{
+	list-style-type: none;
+	padding-left: 0;
+}	
+ol#history li{
+	padding: 10px;	
+}
+ol#history li:nth-child(odd){
+	background-color: #d1d1d1;
+	border-radius: 10px;
+}
+main form{
+	background-color: #b0c4de;
+	border-radius: 10px;
+	padding: 10px;
+}
+main form input {
+	height: 28px;
+	font-size: 18px;
+	border: none;
+	border-radius: 5px;
+}
+main form input#initials{
+	max-width: 40px;
+	width: 20%;
+}
+
+main form input#message{
+    	width: calc(100% - 40px - 62px - 10px);
+}
+main form button{
+	border: none;
+	border-radius: 5px;
+	background-color: #6495ed;
+	color: white;
+	font-weight: 500;
+	text-transform: uppercase;
+	height: 28px;
+	vertical-align: bottom;
+	font-size: 18px;
+	width: 62px;
+}
