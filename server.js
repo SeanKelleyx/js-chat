@@ -6,9 +6,14 @@ var app = express();
 var http = require('http');
 var server = http.Server(app);
 var io = require('socket.io')(server);
+var messages = [];
 
 io.on('connection', function(socket){
+    for(let i in messages){
+        io.emit('message', messages[i]);
+    }
     socket.on('message', function(msg){
+        messages.push(msg);
         io.emit('message', msg);
     });
 });
