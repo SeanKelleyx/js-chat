@@ -1,4 +1,4 @@
-/*global console, require */
+/*global require */
 /*eslint no-console: ["error", { allow: ["warn", "error"] }] */
 var express = require('express');
 var app = express();
@@ -16,5 +16,5 @@ io.on('connection', function(socket){
 app.use(express.static('client'));
 
 server.listen(8080, function() {
-  console.log('Chat server running');
+  //console.log('Chat server running');
 });
