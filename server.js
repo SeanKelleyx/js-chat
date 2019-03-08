@@ -13,9 +13,13 @@ io.on('connection', function(socket){
         io.emit('message', messages[i]);
     }
     socket.on('message', function(msg){
-        msg.timestamp = '' + new Date();
-        sendMessage(msg);
-        respond(msg);
+        if(msg.clearHistory){
+            messages = [];
+        }else{
+            msg.timestamp = '' + new Date();
+            sendMessage(msg);
+            respond(msg);
+        }
     });
 });
 function sendMessage(msg){
