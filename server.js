@@ -37,8 +37,6 @@ function respond(msg){
             respondWithTime();
         }
         if(askingWeather(msg)){
-            //respondWithWeather(msg);
-            
             // if has location?
             if(messageHasLocation(msg)){
                 // get weather
@@ -49,6 +47,12 @@ function respond(msg){
                 sendPrompt(buildBotMessage('like what is the weather in San Diego?'));
             }
         }
+    }
+    if(chuckNorris(msg)){
+        respondWithChuckNorrisFact(function(data){
+            //success callback
+            sendMessage(buildBotMessage(data.value));
+        });
     }
 }
 
@@ -128,6 +132,24 @@ function getWoeidInfo(city, errorCallback, successCallback){
         }
     });
 }
+
+//does message contain "chuck norris"
+function chuckNorris(msg){
+    return msg.text.toLowerCase().match(/chuck norris/i);
+}
+
+//get chuck norris fact
+function respondWithChuckNorrisFact(successCallback){
+    request.get("https://api.chucknorris.io/jokes/random", function(error, response){
+        if(!error && response.statusCode == 200){
+            var data = JSON.parse(response.body);
+            successCallback(data);
+        }else{
+            // do nothing
+        }
+    });
+}
+
 
 function buildBotMessage(text){
     return {

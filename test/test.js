@@ -100,7 +100,7 @@ describe("Chat Server Bot Messages",function(){
             }
         });
         
-    });
+    }).timeout(5000);
     it('Should broadcast bot message with Chuck Norris fact whenever he is mentioned', function(done){
         client.on('connect', function(){
             client.emit('message', {text: 'chuck norris', initials: 'CLIENT'});
@@ -112,5 +112,5 @@ describe("Chat Server Bot Messages",function(){
             }
         });
         
-    });
+    }).timeout(5000);
 });
