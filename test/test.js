@@ -101,4 +101,16 @@ describe("Chat Server Bot Messages",function(){
         });
         
     });
+    it('Should broadcast bot message with Chuck Norris fact whenever he is mentioned', function(done){
+        client.on('connect', function(){
+            client.emit('message', {text: 'chuck norris', initials: 'CLIENT'});
+        });
+        client.on('message', function(msg){
+            if(msg.initials == 'BOT'){
+                msg.text.toLowerCase().should.containEql('chuck norris');
+                done();
+            }
+        });
+        
+    });
 });
