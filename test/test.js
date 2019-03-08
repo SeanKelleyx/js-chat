@@ -89,4 +89,16 @@ describe("Chat Server Bot Messages",function(){
         });
         
     });
+    it('Should broadcast bot message for weather question', function(done){
+        client.on('connect', function(){
+            client.emit('message', {text: 'what is the weather in san diego?', initials: 'CLIENT'});
+        });
+        client.on('message', function(msg){
+            if(msg.initials == 'BOT'){
+                msg.text.should.startWith('In San Diego: ');
+                done();
+            }
+        });
+        
+    });
 });
